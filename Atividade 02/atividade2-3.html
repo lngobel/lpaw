@@ -1,0 +1,43 @@
+<body>
+    <canvas width="600" height="400">
+
+    </canvas>
+</body>
+
+
+
+<style>
+    body {display: flex; justify-content: center;}
+    canvas {border: 1px solid black}
+</style>
+
+
+
+<script>
+    const canvas = document.querySelector('canvas')
+    const ctx  = canvas.getContext('2d')
+
+    function triEqui(ctx,x,y,l,color='#000',rev=false){
+        let h = (l*(Math.sqrt(3)))/2;
+        ctx.strokeStyle = color;
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        if(!rev){
+            ctx.moveTo(x,y);
+            ctx.lineTo(x+(l/2),y+h);
+            ctx.lineTo(x-(l/2),y+h);
+            ctx.lineTo(x,y);
+        }
+        else{
+            ctx.moveTo(x,y);
+            ctx.lineTo(x+(l/2),y);
+            ctx.lineTo(x,y+h);
+            ctx.lineTo(x-(l/2),y);
+            ctx.lineTo(x,y);
+        }
+        ctx.stroke();
+        ctx.fill();
+    }
+    triEqui(ctx,100,10,80,'#000');
+    triEqui(ctx,200,10,80,'#0f0',true);
+</script>

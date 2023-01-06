@@ -1,0 +1,32 @@
+<div class="conteiner">
+    <div class="loader"></div>
+</div>
+
+<style>
+.conteiner{
+    width: 200px;
+    height: 200px;
+    border: 2px black dotted;
+}
+
+.loader{
+    background-image: url(https://www.freeiconspng.com/thumbs/load-icon-png/load-icon-png-8.png);
+    width: 200px;
+    height: 200px;
+    background-size: contain;
+    animation: loading;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+}
+
+.conteiner:hover > .loader{
+    animation-play-state: running;
+}
+  
+@keyframes loading{
+    0%{transform: rotate(0deg);}
+    100%{transform: rotate(360deg);}
+}
+</style>

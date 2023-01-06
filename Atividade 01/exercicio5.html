@@ -1,0 +1,40 @@
+<div class="conteiner">
+    <div class="borda">
+        <div class="barra"></div>
+    </div>
+</div>
+
+<style>
+    .conteiner{
+        display: flex;
+        justify-items: center;
+        align-items: center;
+        width: 80px;
+        height: 50px;
+        margin: auto;
+        border: 0.5px solid black;
+    }
+
+    .borda{
+        margin: auto;
+        border: 0.5px solid rgb(52, 45, 45);
+        width: 40px;
+        height: 5px;
+    }
+
+    .barra{
+        animation: load 3s linear 0s infinite paused;
+        background-color: red;
+        width: 40px;
+        height: 5px;
+    }
+
+    .borda:hover .barra{
+        animation-play-state: running;
+    }
+
+    @keyframes load{
+        0% {width: 0%}
+        100% {width: 100%} 
+    }
+</style>

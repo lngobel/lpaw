@@ -1,0 +1,88 @@
+<html>
+    <div class="container">
+        <div class="input-group">
+            <input id="login" type="text" name="login" placeholder="Username">
+            <label for="login">Username:</label>
+        </div>
+        <div class="input-group">
+            <input id="password" type="password" name="login" placeholder="Password">
+            <label for="password">Password:</label>
+        </div>
+        <div class="button-group">
+            <button>Enter</button>
+        </div>
+    </div>
+</html>
+
+<style>
+    *{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 25%;
+        margin: auto;
+        margin-top: 40px;
+    }
+
+    .input-group{
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+        width: 100%;
+    }
+
+    input{
+        border: none;
+        border-bottom: 1px solid black;
+        padding-top: 20px;
+    }
+
+    input:focus{
+        border: none;
+        border-bottom: 3px solid black;
+        box-shadow: 0 0 0 0;
+        outline: 0;
+    }
+
+    input:focus ~ label{
+        text-align: center;
+        position: relative;
+        visibility: visible;
+        bottom: 40px;
+        transition: bottom 2s linear;
+    }
+
+    input:focus::placeholder{
+        visibility: hidden;
+    }
+
+    label{
+        visibility: hidden;
+    }
+
+    ::placeholder{
+        text-align: center;
+        font-weight: bold;
+        color: black;
+    }
+
+    button{
+        width: 90px;
+        height: 40px;
+        margin: 10px;
+        background-color: #808080;
+        border: none;
+    }
+
+    button:hover{
+        background-color: #1e1e1e;
+        color: white;
+        border-left: 20px solid #1e1e1e;
+        border-right: 20px solid #1e1e1e;
+        transition: border-left 1s linear, border-right 1s linear, background-color 1s linear;
+    }
+</style>

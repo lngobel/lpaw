@@ -1,0 +1,71 @@
+<body>
+    <canvas width="600" height="400">
+
+    </canvas>
+</body>
+
+
+
+<style>
+    body {display: flex; justify-content: center;}
+    canvas {border: 1px solid black}
+</style>
+
+
+
+<script>
+    const canvas = document.querySelector('canvas')
+    const ctx  = canvas.getContext('2d')
+
+    function circ(ctx,x,y,r,l,color,fill=false){
+        ctx.lineWidth = l;
+        ctx.strokeStyle = color;
+        ctx.beginPath();
+        ctx.arc(x,y,r,0,360);
+        ctx.stroke();
+        if(fill){
+            ctx.fillStyle = fill;
+            ctx.fill();
+        }
+    }
+
+    function triEqui(ctx,x,y,l,color='#000',rev=false){
+        let h = (l*(Math.sqrt(3)))/2;
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = color;
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        if(!rev){
+            ctx.moveTo(x,y);
+            ctx.lineTo(x+(l/2),y+h);
+            ctx.lineTo(x-(l/2),y+h);
+            ctx.lineTo(x,y);
+        }
+        else{
+            ctx.moveTo(x,y);
+            ctx.lineTo(x+(l/2),y);
+            ctx.lineTo(x,y+h);
+            ctx.lineTo(x-(l/2),y);
+            ctx.lineTo(x,y);
+        }
+        ctx.stroke();
+        ctx.fill();
+    }
+    
+    function drawStar(ctx,x,y,s,color){
+        triEqui(ctx,x,y,s,color);
+        y=y+(s/4);
+        triEqui(ctx,x,y,s,color,true);
+    }
+
+    function shield(ctx,x,y,size){
+        circ(ctx,x,y,size/2,size/8,'red');
+        circ(ctx,x,y,size/4,size/8,'red','blue');
+        drawStar(ctx,x,y-(size/4.3),size/2.4,'#fff');
+    };
+
+    
+    shield(ctx,canvas.width/2,canvas.height/2,100);
+    
+    
+</script>

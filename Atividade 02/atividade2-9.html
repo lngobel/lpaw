@@ -1,0 +1,51 @@
+<body>
+    <canvas width="600" height="400">
+
+    </canvas>
+</body>
+
+
+
+<style>
+    body {display: flex; justify-content: center;}
+    canvas {border: 1px solid black}
+</style>
+
+
+
+<script>
+    const canvas = document.querySelector('canvas')
+    const ctx  = canvas.getContext('2d')
+
+    function gradiente(ctx){
+        let x1 = 20;
+        let y1 = 200;
+        let r1 = 50;
+        let r2 = 200;
+        let arte = ctx.createRadialGradient(x1,y1,r1,x1,y1,r2);
+        arte.addColorStop(0,"#FFFF7F")
+        arte.addColorStop(.8,"#FFFF00");
+        arte.addColorStop(.9,"#EEAD2D");
+        arte.addColorStop(1,"#87CEEB")
+        ctx.fillStyle = arte;
+        ctx.fillRect(0,0,canvas.width/2,canvas.height);
+
+        let x2 = 640;
+        let y2 = 200;
+        let r3 = 50;
+        let r4 = 200;
+        let arte2 = ctx.createRadialGradient(x2,y2,r3,x2,y2,r4);
+        arte2.addColorStop(0,"#FFFF7F")
+        arte2.addColorStop(.8,"#FFFAAA");
+        arte2.addColorStop(.9,"#FFFBBD");
+        arte2.addColorStop(1,"#152238")
+        ctx.fillStyle = arte2;
+        ctx.shadowColor = "#152238";
+        ctx.shadowOffsetX = -5;
+        ctx.shadowOffsetY = -5;
+        ctx.shadowBlur = 10;
+        ctx.fillRect(canvas.width/2,0,canvas.width,canvas.height);
+    }
+
+    gradiente(ctx);
+</script>

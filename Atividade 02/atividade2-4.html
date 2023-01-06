@@ -1,0 +1,51 @@
+<body>
+    <canvas width="600" height="400">
+
+    </canvas>
+</body>
+
+
+
+<style>
+    body {display: flex; justify-content: center;}
+    canvas {border: 1px solid black}
+</style>
+
+
+
+<script>
+    const canvas = document.querySelector('canvas')
+    const ctx  = canvas.getContext('2d')
+
+    function triEqui(ctx,x,y,l,color='#000',rev=false){
+        let h = (l*(Math.sqrt(3)))/2;
+        ctx.strokeStyle = color;
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        if(!rev){
+            ctx.moveTo(x,y);
+            ctx.lineTo(x+(l/2),y+h);
+            ctx.lineTo(x-(l/2),y+h);
+            ctx.lineTo(x,y);
+        }
+        else{
+            ctx.moveTo(x,y);
+            ctx.lineTo(x+(l/2),y);
+            ctx.lineTo(x,y+h);
+            ctx.lineTo(x-(l/2),y);
+            ctx.lineTo(x,y);
+        }
+        ctx.stroke();
+        ctx.fill();
+    }
+    
+    function drawStar(ctx,x,y,s,color){
+        triEqui(ctx,x,y,s,color);
+        y=y+(s/4);
+        triEqui(ctx,x,y,s,color,true);
+    }
+
+    drawStar(ctx,50,50,40,"Saddlebrown");
+    drawStar(ctx,100,25,40,"gray");
+    drawStar(ctx,150,50,40,"gold");
+</script>

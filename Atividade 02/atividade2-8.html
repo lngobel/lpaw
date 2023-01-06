@@ -1,0 +1,48 @@
+<body>
+    <canvas width="600" height="400">
+
+    </canvas>
+</body>
+
+
+
+<style>
+    body {display: flex; justify-content: center;}
+    canvas {border: 1px solid black}
+</style>
+
+
+
+<script>
+    const canvas = document.querySelector('canvas')
+    const ctx  = canvas.getContext('2d')
+
+    function writeCenterXY(ctx,cwidth,cheight,text,color='black',size=12,family='serif',style='normal',base='alphabetic'){
+        ctx.fillStyle = color;
+        ctx.font = `${style} ${size}px ${family}`;
+        ctx.textBaseline = base;
+        let tamanho = ctx.measureText(text);
+        console.log(tamanho); 
+        ctx.fillText(text,(cwidth/2)-(tamanho.width/2),(cheight/2) - size);
+    };
+
+    function gremio(ctx){
+        let x0 = 0;
+        let y0 = 0;
+        let x1 = canvas.width;
+        let y1 = canvas.height;
+        let fundo = ctx.createLinearGradient(x0,y0,x1,y1);
+        fundo.addColorStop(0,"#00f");
+        fundo.addColorStop(.5,"#fff");
+        fundo.addColorStop(1,"#000");
+        ctx.fillStyle = fundo;
+        ctx.fillRect(0,0,canvas.width,canvas.height);
+        ctx.shadowColor = "#000";
+        ctx.shadowOffsetX = 5;
+        ctx.shadowOffsetY = 5;
+        ctx.shadowBlur = 10;
+        writeCenterXY(ctx,canvas.width,canvas.height,"GRÊMIO",color='black',size=48,family='sans-serif',style='bold',base='top');
+    }
+
+    gremio(ctx);
+</script>

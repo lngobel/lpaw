@@ -1,0 +1,43 @@
+<body>
+    <canvas width="600" height="400">
+
+    </canvas>
+</body>
+
+
+
+<style>
+    body {display: flex; justify-content: center;}
+    canvas {border: 1px solid black}
+</style>
+
+
+
+<script>
+    const canvas = document.querySelector('canvas')
+    const ctx  = canvas.getContext('2d')
+
+    function circ(ctx,x,y,r,l,color,fill=false){
+        ctx.lineWidth = l;
+        ctx.strokeStyle = color;
+        ctx.beginPath();
+        ctx.arc(x,y,r,0,360);
+        ctx.stroke();
+        if(fill){
+            ctx.fillStyle = fill;
+            ctx.fill();
+        }
+    }
+
+    function smile(ctx,x,y,size){
+        circ(ctx,x,y,size/2,4,'black','yellow');
+        circ(ctx,x-(size/5),y-(size/6),size*0.04,2,'black','black');
+        circ(ctx,x+(size/5),y-(size/6),size*0.04,2,'black','black');
+        ctx.beginPath();
+        ctx.lineWidth = size*0.03;
+        ctx.arc(x,y+(size/10),size/4,0,Math.PI/180*180);
+        ctx.stroke();
+    }
+
+    smile(ctx,50,50,50);
+</script>

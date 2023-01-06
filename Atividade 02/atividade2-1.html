@@ -1,0 +1,37 @@
+<body>
+    <canvas width="600" height="400">
+
+    </canvas>
+</body>
+
+
+
+<style>
+    body {display: flex; justify-content: center;}
+    canvas {border: 1px solid black}
+</style>
+
+
+
+<script>
+    const canvas = document.querySelector('canvas')
+    const ctx  = canvas.getContext('2d')
+
+    function quad(ctx,x,y,s,l,color,fill = false){
+        ctx.lineWidth = l;
+        ctx.strokeStyle = color;
+        if(fill){
+            ctx.strokeRect(x,y,s,s);
+            ctx.fillStyle = fill;
+            ctx.fillRect(x,y,s,s);
+        }
+        else{
+            ctx.strokeRect(x,y,s,s);
+        }
+    }
+
+    quad(ctx,50,30,50,5,'magenta');
+    quad(ctx,120,30,50,5,'blue','red');
+
+    window.addEventListener("load",quad,false)
+</script>
