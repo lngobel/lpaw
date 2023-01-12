@@ -1,0 +1,10 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+canvas {
+    border: 1px solid black;
+    background-image: url("../../public/img/bg/bg.jpg");
+    background-size: 100% 100%;
+}
