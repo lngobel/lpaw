@@ -129,7 +129,7 @@ const loop = () => {
 }
 
 function texto(font, text){ 
-	CTX.font = `bold ${font}px sans`
+	CTX.font = `bold ${font}px verdana`
 	CTX.baseline = 'top'
 	CTX.fillStyle = '#fff' 
 	let t = text
