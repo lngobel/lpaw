@@ -1,3 +1,3 @@
 #Clique no link abaixo para jogar
 
-Link no Netlify: supermarioproject.netlify.app
+Link no Netlify: supermariolpaw.netlify.app
