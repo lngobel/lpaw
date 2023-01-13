@@ -32,6 +32,7 @@ const init = async () => {
 
 	themeSong = await loadAudio('sounds/theme.mp3')
 	themeSong.volume = .3
+	themeSong.loop = true
 	dieSong = await loadAudio('sounds/die.mp3')
 	dieSong.volume = .4
 	coguSong = await loadAudio('sounds/cogu.mp3')
@@ -61,8 +62,10 @@ const begin = () =>{
 	
 
 	if(!tryAgain){
-		let start = texto(10, "Press ENTER to start!")
-		CTX.fillText(start, (CANVAS.width/3) + 45, (CANVAS.height-15))
+		let instructions = texto(15, "Use W, S, A, D to move")
+		CTX.fillText(instructions, (CANVAS.width/3) + 20, (CANVAS.height-30))
+		let start = texto(12, "Press ENTER to start!")
+		CTX.fillText(start, (CANVAS.width/3) + 35, (CANVAS.height-15))
 	} 
 
 	let enter = setInterval(() => {
@@ -77,7 +80,6 @@ const begin = () =>{
 
 const loop = () => {
 	setTimeout(() => {
-
 		CTX.clearRect(0, 0, CANVAS.width, CANVAS.height)
 
 		text = texto(15, "Pontos: " + point)
@@ -99,7 +101,6 @@ const loop = () => {
 		enemies.forEach(e =>{
 			e.move(boundaries, 0) 
 			e.draw(CTX)
-			 //var = teste?verdadeiro:falso;
 			 gameover = !gameover 
 			 		? hero.colide(e)
 					: true;
@@ -112,12 +113,12 @@ const loop = () => {
 			dieSong.play()
 			cancelAnimationFrame(anime)
 			console.error('DEAD!!!')
-			let over = texto(40, "GAME OVER")
+			let over = texto(30, "GAME OVER")
+			CTX.fillText(over, (CANVAS.width/3), CANVAS.height-50)
 			let score = texto(20, `Your score: ${point}`)
+			CTX.fillText(score, (CANVAS.width/3) + 35, (CANVAS.height-30))
 			let again = texto(10, "Press ENTER to try again!")
-			CTX.fillText(over, (CANVAS.width/3) + 30, CANVAS.height-50)
-			CTX.fillText(score, (CANVAS.width/3) + 33, (CANVAS.height-35))
-			CTX.fillText(again, (CANVAS.width/3) + 10, (CANVAS.height-15))
+			CTX.fillText(again, (CANVAS.width/3) + 35, (CANVAS.height-10))
 			point = 0 
 			setTimeout(() => {
 				begin()
