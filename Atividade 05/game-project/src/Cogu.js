@@ -22,17 +22,19 @@ export default class Cogu extends Circle{
 	}
 
     draw(CTX){
-		CTX.drawImage(
-			this.img,
-			0,
-			0,
-			this.width,
-			this.height,
-			this.x,
-			this.y,
-			30,
-			30,
-		)
-        this.hit.draw(CTX)
+		if(this.img){
+			CTX.drawImage(
+				this.img,
+				0,
+				0,
+				this.width,
+				this.height,
+				this.x,
+				this.y,
+				30,
+				30,
+			)
+			this.hit.draw(CTX)
+		}
     }
 }
